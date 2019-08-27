@@ -1,17 +1,17 @@
 import {call, put, takeLatest} from 'redux-saga/effects'
-import {fetchTodoById} from "../api";
+import {fetchTodoById} from "../../api";
 import {addTodo, loadTodo} from "./actions";
 import {TodoAction} from "./types";
 
 export function* fetchTodo(action: ReturnType<typeof loadTodo>) {
     try {
         const response = yield call(fetchTodoById, action.payload)
-        put(addTodo(response.data))
+        yield put(addTodo(response.data.title))
     } catch (e) {
         console.warn(e)
     }
 }
 
-export default function* rootSaga(){
+export  function* todoSaga(){
     yield takeLatest(TodoAction.LoadTodo, fetchTodo)
 }

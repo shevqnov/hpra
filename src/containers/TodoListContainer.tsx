@@ -1,13 +1,12 @@
 import { connect, MapDispatchToProps, MapStateToProps } from 'react-redux'
-
-import { TodoState } from "../store/types";
-import { addTodo, loadTodo } from "../store/actions";
+import { addTodo, loadTodo } from "../store/card/actions";
 import { TodoList, TodoListDispatchProps, TodoListStateProps } from "../components/TodoList";
+import { AppState } from '../store';
 
-const mapStateToProps: MapStateToProps<TodoListStateProps, {}, TodoState> = (state) => ({
-    todoList: state.todoList,
-    loading: state.loading,
-    errors: state.errors
+const mapStateToProps: MapStateToProps<TodoListStateProps, {}, AppState> = (state) => ({
+    todoList: state.todo.todoList,
+    loading: state.todo.loading,
+    errors: state.todo.errors
 })
 
 const mapDispatchToProps: MapDispatchToProps<TodoListDispatchProps, {}> = (dispatch) => ({
