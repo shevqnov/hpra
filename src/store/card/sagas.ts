@@ -1,17 +1,17 @@
 import {call, put, takeLatest} from 'redux-saga/effects'
-import {fetchTodoById} from "../../api";
-import {addTodo, loadTodo} from "./actions";
-import {TodoAction} from "./types";
+import {fetchCardList} from "../../api";
+import { loadCards, setCardList} from "./actions";
+import {CardAction} from "./types";
 
-export function* fetchTodo(action: ReturnType<typeof loadTodo>) {
+export function* fetchCardListSaga(action: ReturnType<typeof loadCards>) {
     try {
-        const response = yield call(fetchTodoById, action.payload)
-        yield put(addTodo(response.data.title))
+        const response = yield call(fetchCardList, action.payload)
+        yield put(setCardList(response.data))
     } catch (e) {
         console.warn(e)
     }
 }
 
-export  function* todoSaga(){
-    yield takeLatest(TodoAction.LoadTodo, fetchTodo)
-}
+export const cardSagas = [
+    takeLatest(CardAction.LoadCards, fetchCardListSaga)
+]

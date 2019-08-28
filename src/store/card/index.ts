@@ -1,17 +1,21 @@
-import {TodoState, TodoActionsTypes, TodoAction} from "./types";
-export {todoSaga} from './sagas'
+import {CardState, CardActionsTypes, CardAction} from "./types";
+export {cardSagas} from './sagas'
 
-const initialState: TodoState = {
-    todoList: [],
+const initialState: CardState = {
+    cardList: [],
     loading: false,
     errors: []
 }
 
 
-export const todoReducer = (state = initialState, action: TodoActionsTypes): TodoState => {
+export const cardReducer = (state = initialState, action: CardActionsTypes): CardState => {
     switch (action.type) {
-        case TodoAction.AddTodo:
-            return {...state, todoList: [...state.todoList, action.payload]}
+        // case CardAction.AddCard:
+        //     return {...state, cardList: [...state.cardList, action.payload]}
+        case CardAction.LoadCards:
+          return {...state, loading: true}
+        case CardAction.SetCardList:
+            return {...state, cardList: action.payload, loading: false}
         default:
             return state
     }

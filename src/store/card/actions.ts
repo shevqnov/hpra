@@ -1,11 +1,16 @@
-import {TodoAction} from "./types";
+import {CardAction, Card} from "./types";
 
-export const addTodo = (title: string) => ({
-    type: TodoAction.AddTodo,
-    payload: {title, completed: false, id: new Date().getTime()}
+export const addCard = (card: Card) => ({
+    type: CardAction.AddCard,
+    payload: card
 } as const)
 
-export const loadTodo = (id: number) => ({
-    type: TodoAction.LoadTodo,
-    payload: id
+export const loadCards = (limit: number) => ({
+    type: CardAction.LoadCards,
+    payload: limit
 } as const)
+
+export const setCardList = (cardList: Card[]) => ({
+    type: CardAction.SetCardList,
+    payload: cardList
+})

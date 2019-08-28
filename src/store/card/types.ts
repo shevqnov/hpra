@@ -1,21 +1,23 @@
 import * as actions from './actions'
+import { InferValueTypes } from '../types';
 
-export interface Todo {
+export interface Card {
     id: number;
-    title: string;
-    completed: boolean
+    word: string;
+    meaning: string;
+    image: string;
 }
 
-export interface TodoState {
-    todoList: Todo[];
+export interface CardState {
+    cardList: Card[];
     loading: boolean;
     errors: string[];
 }
 
-export enum TodoAction {
-    AddTodo = 'ADD_TODO',
-    LoadTodo = 'LOAD_TODO'
+export enum CardAction {
+    AddCard = 'ADD_CARD',
+    LoadCards = 'LOAD_CARDS',
+    SetCardList = 'SET_CARD_LIST'
 }
-export type InferValueTypes<T> = T extends { [key: string]: infer U } ? U : never;
 
-export type TodoActionsTypes = ReturnType<InferValueTypes<typeof actions>>;
+export type CardActionsTypes = ReturnType<InferValueTypes<typeof actions>>;

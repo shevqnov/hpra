@@ -1,12 +1,18 @@
 import React from 'react';
-import { Provider} from 'react-redux'
+import { Provider } from 'react-redux'
+import { Router, Route } from "react-router-dom";
 
 import store from './store'
-import TodoListContainer from "./containers/TodoListContainer";
+import Cards from "./containers/CardListContainer";
+import Login from './containers/LoginContainer';
+import history from './history';
 
 const App: React.FC = () => (
     <Provider store={store}>
-        <TodoListContainer/>
+        <Router history={history}>
+            <Route exact path='/cards' component={Cards} />
+            <Route exact path='/login' component={Login} />
+        </Router>
     </Provider>
 )
 
