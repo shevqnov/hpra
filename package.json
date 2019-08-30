@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.3.3",
+    "@material-ui/icons": "^4.2.1",
     "@types/jest": "24.0.18",
     "@types/node": "12.7.2",
     "@types/react": "16.9.2",
@@ -23,8 +25,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint": "eslint ./src/**/*.{ts,tsx}",
+    "lint:fix": "eslint --fix ./src/**/*.{ts,tsx}",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test:integration": "jest -c integration/jest.config.js",
+    "test:integrationWithWatch": "jest -c integration/jest.config.js --watch"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,7 +47,19 @@
     ]
   },
   "devDependencies": {
+    "@types/expect-puppeteer": "^3.3.1",
+    "@types/jest-environment-puppeteer": "^4.3.1",
+    "@types/puppeteer": "^1.19.1",
     "@types/redux-pack": "^0.1.4",
-    "@types/redux-saga": "^0.10.5"
+    "@types/redux-saga": "^0.10.5",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
+    "jest-puppeteer": "^4.3.0",
+    "prettier": "^1.18.2",
+    "puppeteer": "^1.19.0"
   }
 }

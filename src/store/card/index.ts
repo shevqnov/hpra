@@ -7,7 +7,6 @@ const initialState: CardState = {
     errors: []
 }
 
-
 export const cardReducer = (state = initialState, action: CardActionsTypes): CardState => {
     switch (action.type) {
         // case CardAction.AddCard:

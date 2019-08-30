@@ -1,27 +1,23 @@
-
-import {createStore, applyMiddleware, compose, combineReducers} from "redux";
-import {cardSagas, cardReducer as card} from './card'
-import {userSagas, userReducer as user} from './user'
+import { createStore, applyMiddleware, compose, combineReducers } from "redux";
+import { cardSagas, cardReducer as card } from "./card";
+import { userSagas, userReducer as user } from "./user";
 import createSagaMiddleware from "redux-saga";
-import {all} from 'redux-saga/effects'
+import { all } from "redux-saga/effects";
 
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
-    card,
-    user
-})
+  card,
+  user
+});
 
-function* rootSaga (){
-    yield all([
-        ...cardSagas,
-        ...userSagas
-    ])
+function* rootSaga() {
+  yield all([...cardSagas, ...userSagas]);
 }
 
-export type AppState = ReturnType<typeof rootReducer>
+export type AppState = ReturnType<typeof rootReducer>;
 
-const composeEnch = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const composeEnch = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export default createStore(rootReducer, composeEnch(applyMiddleware(sagaMiddleware)))
-sagaMiddleware.run(rootSaga)
+export default createStore(rootReducer, composeEnch(applyMiddleware(sagaMiddleware)));
+sagaMiddleware.run(rootSaga);

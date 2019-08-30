@@ -1,21 +1,22 @@
-import React from 'react'
+import React from "react";
+import { Card, Typography } from "@material-ui/core";
 
 interface Props {
   word: string;
   meaning: string;
-  image: string
+  image: string;
 }
 
-const Card: React.FC<Props> = ({ word, meaning, image }) => {
+const CardComponent: React.FC<Props> = ({ word, meaning, image }) => {
   return (
-    <li>
-      <b>{word}</b>
+    <Card style={{ width: 200 }}>
+      <Typography variant="subtitle1">{word}</Typography>
       <br />
-      <span>{meaning}</span>
+      <Typography variant="subtitle2">{meaning}</Typography>
       <br />
       <img style={{ width: 100 }} src={image} alt={word} />
-    </li>
-  )
-}
+    </Card>
+  );
+};
 
-export default Card
+export default CardComponent;
