@@ -15,6 +15,7 @@ export const userReducer = (state = initialState, action: UserActionsTypes): Use
       return {...state, loading: true}
     case UserAction.SetUserInfo:
       return {...state, ...action.payload}
-    default: return initialState
+    default: 
+      return state
   }
 }
