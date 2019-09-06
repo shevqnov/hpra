@@ -21,3 +21,18 @@ jobs:
 
       - run: yarn test
       - run: yarn test:integration
+  
+  integration:
+    docker:
+      - image: threetreeslight/puppeteer@0.1.2
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json"}}
+            - v1-dependencies-
+
+      - run: yarn install
+      - run: yarn test:integration
