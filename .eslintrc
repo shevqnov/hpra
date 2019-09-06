@@ -9,8 +9,13 @@
   "globals": {
     "page": "readonly"
   },
-  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "plugins": [
+    "react",
+    "@typescript-eslint",
+    "prettier"
+  ],
   "env": {
+    "node": true,
     "browser": true,
     "jest": true,
     "es6": true,

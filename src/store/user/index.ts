@@ -1,21 +1,21 @@
-import { UserState, UserActionsTypes, UserAction } from './types';
-export {userSagas} from './sagas'
+import { UserState, UserActionsTypes, UserAction } from "./types";
+export { userSagas } from "./sagas";
 
-const initialState: UserState = {
-  email: '',
-  token: window.localStorage.getItem('token') || '',
+export const initialState: UserState = {
+  email: "",
+  token: window.localStorage.getItem("token") || "",
   loading: false,
-  registered: Boolean(window.localStorage.getItem('token'))
-}
+  registered: Boolean(window.localStorage.getItem("token"))
+};
 
 export const userReducer = (state = initialState, action: UserActionsTypes): UserState => {
-  switch(action.type){
+  switch (action.type) {
     case UserAction.Register:
     case UserAction.Login:
-      return {...state, loading: true}
+      return { ...state, loading: true };
     case UserAction.SetUserInfo:
-      return {...state, ...action.payload}
-    default: 
-      return state
+      return { ...state, ...action.payload, loading: false };
+    default:
+      return state;
   }
-}
+};

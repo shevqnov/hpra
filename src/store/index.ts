@@ -17,7 +17,7 @@ function* rootSaga() {
 
 export type AppState = ReturnType<typeof rootReducer>;
 
-const composeEnch = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnch = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default createStore(rootReducer, composeEnch(applyMiddleware(sagaMiddleware)));
 sagaMiddleware.run(rootSaga);
